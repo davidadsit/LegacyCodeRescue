@@ -2,8 +2,14 @@
 
 namespace MvcMusicStore.Models
 {
-    public class MusicStoreEntities : DbContext
-    {
+	public interface IMusicStoreEntities
+	{
+		DbSet<Album> Albums { get; }
+		DbSet<Genre> Genres { get; }
+	}
+
+	public class MusicStoreEntities : DbContext, IMusicStoreEntities
+	{
         public DbSet<Album> Albums { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Artist> Artists { get; set; }
