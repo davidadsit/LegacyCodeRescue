@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Web Developer Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMusicStore", "MvcMusicStore\MvcMusicStore.csproj", "{32DCD27D-A84C-4250-B657-408B3620A9AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicStore.Tests", "MusicStore.Tests\MusicStore.Tests.csproj", "{79859419-B38F-4388-A486-8C430EBC86EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{32DCD27D-A84C-4250-B657-408B3620A9AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32DCD27D-A84C-4250-B657-408B3620A9AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32DCD27D-A84C-4250-B657-408B3620A9AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79859419-B38F-4388-A486-8C430EBC86EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79859419-B38F-4388-A486-8C430EBC86EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79859419-B38F-4388-A486-8C430EBC86EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79859419-B38F-4388-A486-8C430EBC86EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
