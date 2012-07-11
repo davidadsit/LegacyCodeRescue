@@ -31,5 +31,17 @@ namespace MusicStore.Tests.ControllerTests
 			//Assert
 			Assert.AreEqual(storeDb.Genres, indexResult.Model);
 		}
+
+		[Test]
+		public void Browse_displays_the_albums_in_a_genre()
+		{
+			StoreController storeController = new StoreController();
+			MusicStoreEntities storeDb = new MusicStoreEntities();
+
+			ViewResult browseResult = (ViewResult)storeController.Browse("Rock");
+
+			Genre genre = storeDb.Genres.Include("Albums").Single(g => g.Name == "Rock");
+			Assert.AreEqual(genre, browseResult.Model);
+		}
 	}
 }
