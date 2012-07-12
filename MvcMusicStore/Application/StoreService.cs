@@ -7,6 +7,8 @@ namespace MvcMusicStore.Application
 	public interface IStoreService
 	{
 		Genre FindGenreByName(string genre);
+		Album GetAlbumById(int albumId);
+		IEnumerable<Genre> GetAllGenres();
 	}
 
 	public class StoreService : IStoreService
@@ -24,6 +26,16 @@ namespace MvcMusicStore.Application
 				.Genres
 				.Include("Albums")
 				.Single(g => g.Name == genre);
+		}
+
+		public Album GetAlbumById(int albumId)
+		{
+			return musicStoreEntities.Albums.Find(albumId);
+		}
+
+		public IEnumerable<Genre> GetAllGenres()
+		{
+			return musicStoreEntities.Genres.ToList();
 		}
 	}
 }

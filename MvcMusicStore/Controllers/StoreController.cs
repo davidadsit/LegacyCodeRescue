@@ -27,12 +27,11 @@ namespace MvcMusicStore.Controllers
     	//
         // GET: /Store/
 
-        public ActionResult Index()
-        {
-            var genres = storeDb.Genres.ToList();
-
-            return View(genres);
-        }
+		public ActionResult Index()
+		{
+			var genres = storeService.GetAllGenres();
+			return View(genres);
+		}
 
         //
         // GET: /Store/Browse?genre=Disco
@@ -46,12 +45,11 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /Store/Details/5
 
-        public ActionResult Details(int id)
-        {
-            var album = storeDb.Albums.Find(id);
-
-            return View(album);
-        }
+		public ActionResult Details(int id)
+		{
+			Album album = storeService.GetAlbumById(id);
+			return View(album);
+		}
 
         //
         // GET: /Store/GenreMenu

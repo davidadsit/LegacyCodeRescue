@@ -29,24 +29,28 @@ namespace MusicStore.Tests.ControllerTests
 		[Test]
 		public void Details_shows_one_album_by_id()
 		{
-			StoreController storeController = new StoreController();
-			MusicStoreEntities storeDb = new MusicStoreEntities();
+			var musicStoreService = new Mock<IStoreService>();
+			StoreController storeController = new StoreController(musicStoreService.Object);
+			var albumFromService = new Album();
+			musicStoreService.Setup(x => x.GetAlbumById(It.IsAny<int>())).Returns(albumFromService);
 
-			ViewResult detailsResult = (ViewResult) storeController.Details(5);
+			ViewResult detailsResult = (ViewResult)storeController.Details(5);
 
-			Assert.AreEqual(storeDb.Albums.Find(5), detailsResult.Model);
+			Assert.AreEqual(albumFromService, detailsResult.Model);
 		}
 
 		[Test]
 		public void Index_displays_the_list_of_genres()
 		{
 			//Arrange
-			StoreController storeController = new StoreController();
-			MusicStoreEntities storeDb = new MusicStoreEntities();
+			var musicStoreService = new Mock<IStoreService>();
+			StoreController storeController = new StoreController(musicStoreService.Object);
+			var genres = new[] { new Genre() };
+			musicStoreService.Setup(x => x.GetAllGenres()).Returns(genres);
 			//Act
-			ViewResult indexResult = (ViewResult) storeController.Index();
+			ViewResult indexResult = (ViewResult)storeController.Index();
 			//Assert
-			Assert.AreEqual(storeDb.Genres, indexResult.Model);
+			Assert.AreEqual(genres, indexResult.Model);
 		}
 	}
 }
