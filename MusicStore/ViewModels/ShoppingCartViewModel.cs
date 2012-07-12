@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using MvcMusicStore.Models;
+using System.Collections.Generic;
+using MusicStore.Domain;
 
-namespace MvcMusicStore.ViewModels
+namespace MusicStore.ViewModels
 {
     public class ShoppingCartViewModel
     {

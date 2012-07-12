@@ -1,16 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using MvcMusicStore.Models;
+using MusicStore.Domain;
+using MusicStore.Infrastructure;
 
-namespace MvcMusicStore.Application
+namespace MusicStore.Application
 {
-	public interface IStoreService
-	{
-		Genre FindGenreByName(string genre);
-		Album GetAlbumById(int albumId);
-		IEnumerable<Genre> GetAllGenres();
-	}
-
 	public class StoreService : IStoreService
 	{
 		private readonly MusicStoreEntities musicStoreEntities;

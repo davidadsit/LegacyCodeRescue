@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using MvcMusicStore.Application;
-using MvcMusicStore.Models;
+using MusicStore.Application;
 
 namespace MvcMusicStore.Controllers
 {

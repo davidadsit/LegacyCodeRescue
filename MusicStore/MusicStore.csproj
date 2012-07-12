@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{79859419-B38F-4388-A486-8C430EBC86EC}</ProjectGuid>
+    <ProjectGuid>{B2DF1EAE-E5F0-4A70-BD00-703A1562D76C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MusicStore.Tests</RootNamespace>
-    <AssemblyName>MusicStore.Tests</AssemblyName>
+    <RootNamespace>MusicStore</RootNamespace>
+    <AssemblyName>MusicStore</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,16 +34,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,22 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllerTests\StoreControllerTests.cs" />
+    <Compile Include="Application\IStoreService.cs" />
+    <Compile Include="Domain\AccountModels.cs" />
+    <Compile Include="Domain\Album.cs" />
+    <Compile Include="Domain\Artist.cs" />
+    <Compile Include="Domain\Cart.cs" />
+    <Compile Include="Domain\Genre.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderDetail.cs" />
+    <Compile Include="Domain\SampleData.cs" />
+    <Compile Include="Domain\ShoppingCart.cs" />
+    <Compile Include="Infrastructure\MusicStoreEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Application\StoreService.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MusicStore\MusicStore.csproj">
-      <Project>{B2DF1EAE-E5F0-4A70-BD00-703A1562D76C}</Project>
-      <Name>MusicStore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MvcMusicStore\MvcMusicStore.csproj">
-      <Project>{32DCD27D-A84C-4250-B657-408B3620A9AC}</Project>
-      <Name>MvcMusicStore</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

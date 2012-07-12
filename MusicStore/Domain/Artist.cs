@@ -1,4 +1,4 @@
-﻿namespace MvcMusicStore.Models
+namespace MusicStore.Domain
 {
     public class Artist
     {

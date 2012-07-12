@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using MusicStore.Infrastructure;
 
-namespace MvcMusicStore.Models
+namespace MusicStore.Domain
 {
     public partial class ShoppingCart
     {

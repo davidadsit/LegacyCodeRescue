@@ -3,9 +3,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Moq;
-using MvcMusicStore.Application;
+using MusicStore.Application;
+using MusicStore.Domain;
 using MvcMusicStore.Controllers;
-using MvcMusicStore.Models;
 using NUnit.Framework;
 
 namespace MusicStore.Tests.ControllerTests

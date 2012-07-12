@@ -1,6 +1,7 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
+using MusicStore.Domain;
 
-namespace MvcMusicStore.Models
+namespace MusicStore.Infrastructure
 {
 	public interface IMusicStoreEntities
 	{
