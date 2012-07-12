@@ -56,5 +56,17 @@ namespace MusicStore.Tests.ControllerTests
 			//Assert
 			Assert.AreEqual(genres, indexResult.Model);
 		}
+
+		[Test]
+		public void GenreMenu_displays_the_list_of_genres()
+		{
+			Genre[] genres = new[] { new Genre() };
+			musicStoreService.Setup(x => x.GetAllGenres()).Returns(genres);
+
+			PartialViewResult menuResult = (PartialViewResult)storeController.GenreMenu();
+
+			Assert.AreEqual(genres, menuResult.Model);
+		}
+
 	}
 }

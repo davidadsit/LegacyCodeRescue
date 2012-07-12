@@ -54,13 +54,12 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /Store/GenreMenu
 
-        [ChildActionOnly]
-        public ActionResult GenreMenu()
-        {
-            var genres = storeDb.Genres.ToList();
-
-            return PartialView(genres);
-        }
+		[ChildActionOnly]
+		public ActionResult GenreMenu()
+		{
+			var genres = storeService.GetAllGenres();
+			return PartialView(genres);
+		}
 
     }
 }
