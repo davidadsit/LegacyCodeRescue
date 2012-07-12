@@ -13,11 +13,19 @@ namespace MusicStore.Tests.ControllerTests
 	[TestFixture]
 	public class StoreControllerTests
 	{
+		private Mock<IStoreService> musicStoreService;
+		private StoreController storeController;
+
+		[SetUp]
+		public void SetUp()
+		{
+			musicStoreService = new Mock<IStoreService>();
+			storeController = new StoreController(musicStoreService.Object);
+		}
+		
 		[Test]
 		public void Browse_displays_the_albums_in_a_genre()
 		{
-			var musicStoreService = new Mock<IStoreService>();
-			StoreController storeController = new StoreController(musicStoreService.Object);
 			var genre = new Genre();
 			musicStoreService.Setup(x => x.FindGenreByName(It.IsAny<string>())).Returns(genre);
 
@@ -29,8 +37,6 @@ namespace MusicStore.Tests.ControllerTests
 		[Test]
 		public void Details_shows_one_album_by_id()
 		{
-			var musicStoreService = new Mock<IStoreService>();
-			StoreController storeController = new StoreController(musicStoreService.Object);
 			var albumFromService = new Album();
 			musicStoreService.Setup(x => x.GetAlbumById(It.IsAny<int>())).Returns(albumFromService);
 
@@ -43,8 +49,6 @@ namespace MusicStore.Tests.ControllerTests
 		public void Index_displays_the_list_of_genres()
 		{
 			//Arrange
-			var musicStoreService = new Mock<IStoreService>();
-			StoreController storeController = new StoreController(musicStoreService.Object);
 			var genres = new[] { new Genre() };
 			musicStoreService.Setup(x => x.GetAllGenres()).Returns(genres);
 			//Act
