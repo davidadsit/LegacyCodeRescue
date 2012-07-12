@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Moq;
+using MvcMusicStore.Application;
 using MvcMusicStore.Controllers;
 using MvcMusicStore.Models;
 using NUnit.Framework;
@@ -15,14 +16,14 @@ namespace MusicStore.Tests.ControllerTests
 		[Test]
 		public void Browse_displays_the_albums_in_a_genre()
 		{
-			var musicStoreEntities = new Mock<IMusicStoreEntities>();
-			StoreController storeController = new StoreController(musicStoreEntities.Object);
-			var genres = new DbSet<Genre>();
-			musicStoreEntities.Setup(x => x.Genres).Returns(genres);
+			var musicStoreService = new Mock<IStoreService>();
+			StoreController storeController = new StoreController(musicStoreService.Object);
+			var genre = new Genre();
+			musicStoreService.Setup(x => x.FindGenreByName(It.IsAny<string>())).Returns(genre);
 
-			ViewResult browseResult = (ViewResult) storeController.Browse("Rock");
+			ViewResult browseResult = (ViewResult)storeController.Browse("Rock");
 
-			Assert.AreEqual(genres, browseResult.Model);
+			Assert.AreEqual(genre, browseResult.Model);
 		}
 
 		[Test]

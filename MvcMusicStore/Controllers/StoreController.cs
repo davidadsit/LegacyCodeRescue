@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcMusicStore.Application;
 using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Controllers
 {
     public class StoreController : Controller
     {
-    	readonly IMusicStoreEntities storeDb;
+		private readonly IStoreService storeService;
+		private MusicStoreEntities storeDb;
 
-    	public StoreController() : this(new MusicStoreEntities())
+		public StoreController()
+			: this(new StoreService())
 		{
-    	}
+		}
 
-    	public StoreController(IMusicStoreEntities musicStoreEntities)
-    	{
-    		storeDb = musicStoreEntities;
-    	}
+		public StoreController(IStoreService storeService)
+		{
+			this.storeService = storeService;
+			this.storeDb = new MusicStoreEntities();
+		}
 
     	//
         // GET: /Store/
@@ -35,10 +39,7 @@ namespace MvcMusicStore.Controllers
 
         public ActionResult Browse(string genre)
         {
-            // Retrieve Genre and its Associated Albums from database
-            var genreModel = storeDb.Genres.Include("Albums")
-                .Single(g => g.Name == genre);
-
+			var genreModel = storeService.FindGenreByName(genre);
             return View(genreModel);
         }
 
