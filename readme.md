@@ -4,7 +4,9 @@ Thanks to Jon Galloway for all the hard work he put into creating it. You can fi
 After I got the application working on my local machine, I changed it to use IIS rather than Casini because Casini sucks and should never ever be used by real developers.
 
 The Store Controller seems pretty straight forward, let's create a test for it.
-First we need a test project, so we create a class library.
+Before we start, we need to checkout the correct commit which is 110890a IIS > Casini. We also need to add a hosts file entry for musicstore.local.
+
+Now that we are ready, we need a test project, so let's create a class library.
 Then we need a test framework, so we use nuget to install-package nunit.
 And while we are in the nuget console, we will grab a mocking library as well. install-package moq.
 
@@ -271,4 +273,18 @@ public ActionResult GenreMenu()
 }
 ```
 So now let's clean up the controller by removing the unreferenced code and the pointless comments.
-At this point, I would usually try to move the Application, Domain and Infrastructure components of the solution into a separate project; however, I have already attempted this and due to some uncomfortable coupling, I have learned it would take the rest of the time just to move that code over, so we will skip it for now, just know that you will eventually want that division.
+
+At this point, I would like to move the Application, Domain, Infrastructure, and ViewModel components of 
+the solution into a separate project, so let's take a look at what would happen if we do that right now.
+Check out the Application branch to see what this looks like.
+
+So we see that there are some problems at this point:
+- Both Album and Order are coupled to the System.Web.Mvc.BindAttribute
+- Both ChangePasswordModel and RegisterModel are coupled to System.Web.Mvc.CompareAttribute
+- ShoppingCart is coupled to HttpContext, HttpContextBase, and Controller
+ 
+How do we address these issues?
+- Rather than using entities in our Views and Controllers, we can use ViewModels this will resolve the BindAttribute
+- The HttpContext and HttpContextBase can easily be put behind a service with an interface defined in the MusicStore. This would also eliminate the coupling to Controller
+
+The only really tricky issue is using the CompareAttribute. 
