@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using MvcMusicStore.Application;
 using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Controllers
 {
-    public class StoreController : Controller
-    {
+	public class StoreController : Controller
+	{
 		private readonly IStoreService storeService;
-		private MusicStoreEntities storeDb;
 
 		public StoreController()
 			: this(new StoreService())
@@ -21,45 +17,27 @@ namespace MvcMusicStore.Controllers
 		public StoreController(IStoreService storeService)
 		{
 			this.storeService = storeService;
-			this.storeDb = new MusicStoreEntities();
 		}
 
-    	//
-        // GET: /Store/
-
-		public ActionResult Index()
+		public ActionResult Browse(string genre)
 		{
-			var genres = storeService.GetAllGenres();
-			return View(genres);
+			return View(storeService.FindGenreByName(genre));
 		}
-
-        //
-        // GET: /Store/Browse?genre=Disco
-
-        public ActionResult Browse(string genre)
-        {
-			var genreModel = storeService.FindGenreByName(genre);
-            return View(genreModel);
-        }
-
-        //
-        // GET: /Store/Details/5
 
 		public ActionResult Details(int id)
 		{
-			Album album = storeService.GetAlbumById(id);
-			return View(album);
+			return View(storeService.GetAlbumById(id));
 		}
-
-        //
-        // GET: /Store/GenreMenu
 
 		[ChildActionOnly]
 		public ActionResult GenreMenu()
 		{
-			var genres = storeService.GetAllGenres();
-			return PartialView(genres);
+			return PartialView(storeService.GetAllGenres());
 		}
 
-    }
+		public ActionResult Index()
+		{
+			return View(storeService.GetAllGenres());
+		}
+	}
 }
