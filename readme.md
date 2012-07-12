@@ -5,13 +5,23 @@ After I got the application working on my local machine, I changed it to use IIS
 
 The Store Controller seems pretty straight forward, let's create a test for it.
 First we need a test project, so we create a class library.
---We need a test framework, so we install-package nunit.
---And while we are in the nuget console, we will grab a mocking library as well. install-package moq.
+Then we need a test framework, so we use nuget to install-package nunit.
+And while we are in the nuget console, we will grab a mocking library as well. install-package moq.
 
 Now we can create a StoreControllerTests class
+```cs
+[TestFixture]
+public class StoreControllerTests
+{
 
-Our first test is on the index: Index_displays_the_list_of_genres
---This is a pretty simple test to write
+}
+```
+
+Our first test is on the index: 
+```cs
+[Test]
+public void Index_displays_the_list_of_genres()
+{
 	//Arrange
 	StoreController storeController = new StoreController();
 	MusicStoreEntities storeDb = new MusicStoreEntities();
@@ -19,38 +29,49 @@ Our first test is on the index: Index_displays_the_list_of_genres
 	ViewResult indexResult = (ViewResult) storeController.Index();
 	//Assert
 	Assert.AreEqual(storeDb.Genres, indexResult.Model);
-
---But I can make it pass with the wrong code
+}
+```
+This test was pretty simple, but it isn't a very good test. I can make it pass with the wrong code:
+```cs
+public ActionResult Index()
+{
 	return View(new Genre[]{});
+}
+```
+It also takes a long time to complete.
+So the test isn't very good, but it's a start. 
+Let's move on for now and test the Details method:
+```cs
+[Test]
+public void Details_shows_one_album_by_id()
+{
+	StoreController storeController = new StoreController();
+	MusicStoreEntities storeDb = new MusicStoreEntities();
 
-So the test isn't very good, but it's a start. Let's move on for now and test the Details method:
-	[Test]
-	public void Details_shows_one_album_by_id()
-	{
-		StoreController storeController = new StoreController();
-		MusicStoreEntities storeDb = new MusicStoreEntities();
+	ViewResult detailsResult = (ViewResult)storeController.Details(5);
 
-		ViewResult detailsResult = (ViewResult)storeController.Details(5);
-
-		Assert.AreEqual(storeDb.Albums.Find(5), detailsResult.Model);
-	}
-
+	Assert.AreEqual(storeDb.Albums.Find(5), detailsResult.Model);
+}
+```
 That test isn't any better than the first, but I want to write one more and see if that leads me to any other strategies:
-	[Test]
-	public void Browse_displays_the_albums_in_a_genre()
-	{
-		StoreController storeController = new StoreController();
-		MusicStoreEntities storeDb = new MusicStoreEntities();
+```cs
+[Test]
+public void Browse_displays_the_albums_in_a_genre()
+{
+	StoreController storeController = new StoreController();
+	MusicStoreEntities storeDb = new MusicStoreEntities();
 
-		ViewResult browseResult = (ViewResult)storeController.Browse("Rock");
+	ViewResult browseResult = (ViewResult)storeController.Browse("Rock");
 
-		Genre genre = storeDb.Genres.Include("Albums").Single(g => g.Name == "Rock");
-		Assert.AreEqual(genre, browseResult.Model);
-	}
-This test doesn't even pass because there the test AND the code require that Genres return exactly one matching result.
+	Genre genre = storeDb.Genres.Include("Albums").Single(g => g.Name == "Rock");
+	Assert.AreEqual(genre, browseResult.Model);
+}
+```
+This test doesn't even pass because the test AND the code require that Genres return exactly one matching result and they return no results.
 
 Now we have 3 tests that take 15-20 seconds each to run and don't do a very good job ensuring our functionality is correct.
 Obviously, this isn't the direction we want to go. What can we do?
+
 Well the first thing is to loosen the coupling to the database. The controller uses the MusicStoreEntities class directly with is coupled to the database.
 
 We can extract an interface from the MusicStoreEntities DbContext directly, so let's see where that goes.
