@@ -9,14 +9,13 @@ namespace MusicStore.Tests.RepositoryTests
     public class StoreRepositoryTests
     {
         StoreRepository storeRepository;
-        Genre NewGenre;
+        const string Name = "Viking";
 
         [SetUp]
         public void SetUp()
         {
             storeRepository = new StoreRepository();
-            NewGenre = new Genre() { Name = "Viking", Description = "For true warriors" };
-            AssertThatGenreDoesNotExist(NewGenre.Name);
+            AssertThatGenreDoesNotExist(Name);
         }
 
         [TearDown]
@@ -24,20 +23,23 @@ namespace MusicStore.Tests.RepositoryTests
         {
             var genres = storeRepository.GetAllGenres().ToArray();
 
-            foreach (var genre in genres.Where(x => x.Name == NewGenre.Name))
+            foreach (var genre in genres.Where(x => x.Name == Name))
             {
                 storeRepository.DeleteGenre(genre.GenreId);
             }
-            AssertThatGenreDoesNotExist(NewGenre.Name);
+            AssertThatGenreDoesNotExist(Name);
         }
 
         [Test]
         public void When_creating_and_deleting_a_genre()
         {
-            var savedGenre = storeRepository.SaveGenre(NewGenre);
-            AssertThatGenreExists(NewGenre.Name);
+            var newGenre = new Genre { Name = Name, Description = "For true warriors" };
+
+            var savedGenre = storeRepository.SaveGenre(newGenre);
+            AssertThatGenreExists(newGenre.Name);
+
             storeRepository.DeleteGenre(savedGenre.GenreId);
-            AssertThatGenreDoesNotExist(NewGenre.Name);
+            AssertThatGenreDoesNotExist(newGenre.Name);
         }
 
         void AssertThatGenreDoesNotExist(string name)
