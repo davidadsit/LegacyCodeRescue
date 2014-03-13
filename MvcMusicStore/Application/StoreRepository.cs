@@ -4,18 +4,11 @@ using MvcMusicStore.Models;
 
 namespace MvcMusicStore.Application
 {
-	public interface IStoreService
-	{
-		Genre FindGenreByName(string genre);
-		Album GetAlbumById(int albumId);
-		IEnumerable<Genre> GetAllGenres();
-	}
-
-	public class StoreService : IStoreService
+    public class StoreRepository : IStoreRepository
 	{
 		private readonly MusicStoreEntities musicStoreEntities;
 
-		public StoreService()
+		public StoreRepository()
 		{
 			musicStoreEntities = new MusicStoreEntities();
 		}
@@ -37,5 +30,21 @@ namespace MvcMusicStore.Application
 		{
 			return musicStoreEntities.Genres.ToList();
 		}
+
+        public Genre SaveGenre(Genre genre)
+        {
+            musicStoreEntities.Genres.Add(genre);
+            musicStoreEntities.SaveChanges();
+            return genre;
+        }
+
+        public void DeleteGenre(int id)
+        {
+            var entity = musicStoreEntities.Genres.Find(id);
+            if (entity == null) return;
+
+            musicStoreEntities.Genres.Remove(entity);
+            musicStoreEntities.SaveChanges();
+        }
 	}
 }

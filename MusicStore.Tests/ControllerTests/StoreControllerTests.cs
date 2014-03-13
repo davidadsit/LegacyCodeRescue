@@ -13,13 +13,13 @@ namespace MusicStore.Tests.ControllerTests
 	[TestFixture]
 	public class StoreControllerTests
 	{
-		private Mock<IStoreService> musicStoreService;
+		private Mock<IStoreRepository> musicStoreService;
 		private StoreController storeController;
 
 		[SetUp]
 		public void SetUp()
 		{
-			musicStoreService = new Mock<IStoreService>();
+			musicStoreService = new Mock<IStoreRepository>();
 			storeController = new StoreController(musicStoreService.Object);
 		}
 		
