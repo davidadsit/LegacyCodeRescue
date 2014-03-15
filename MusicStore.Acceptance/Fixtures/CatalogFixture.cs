@@ -25,12 +25,7 @@ namespace MusicStore.Acceptance.Fixtures
         public string GenresToAlbumLinksAreConsistent()
         {
             var genreVm = CatalogFacade.FindGenreByName(GenreName);
-            foreach (var album in genreVm.Albums)
-            {
-                var albumVm = CatalogFacade.GetAlbumById(album.AlbumId);
-                if (albumVm.GenreId != genreVm.GenreId) return "NO";
-            }
-            return "YES";
+            return genreVm.Albums.Select(album => CatalogFacade.GetAlbumById(album.AlbumId)).All(albumVm => albumVm.GenreId == genreVm.GenreId) ? "YES" : "NO";
         }
     }
 }
