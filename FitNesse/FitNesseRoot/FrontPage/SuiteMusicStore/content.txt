@@ -1,1 +1,6 @@
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {%m -r fitSharp.Slim.Service.Runner,D:\Development\LegacyCodeRescue\FitNesse\fitSharp.dll %p}
+!define TEST_RUNNER {D:\Development\LegacyCodeRescue\FitNesse\Runner.exe}
+!path D:\Development\LegacyCodeRescue\FitNesse\MusicStore.Acceptance.dll
+
 !contents
