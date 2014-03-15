@@ -7,37 +7,37 @@ namespace MvcMusicStore.Controllers
 {
 	public class StoreController : Controller
 	{
-		private readonly IStoreRepository StoreRepository;
+        private readonly ICatalogFacade catalogFacade;
 
 		public StoreController()
-			: this(new StoreRepository())
+            : this(new CatalogFacade(new StoreRepository()))
 		{
 		}
 
-		public StoreController(IStoreRepository StoreRepository)
+        public StoreController(ICatalogFacade catalogFacade)
 		{
-			this.StoreRepository = StoreRepository;
+			this.catalogFacade = catalogFacade;
 		}
 
 		public ActionResult Browse(string genre)
 		{
-			return View(StoreRepository.FindGenreByName(genre));
+			return View(catalogFacade.FindGenreByName(genre));
 		}
 
 		public ActionResult Details(int id)
 		{
-			return View(StoreRepository.GetAlbumById(id));
+			return View(catalogFacade.GetAlbumById(id));
 		}
 
 		[ChildActionOnly]
 		public ActionResult GenreMenu()
 		{
-			return PartialView(StoreRepository.GetAllGenres());
+			return PartialView(catalogFacade.GetAllGenres());
 		}
 
 		public ActionResult Index()
 		{
-			return View(StoreRepository.GetAllGenres());
+			return View(catalogFacade.GetAllGenres());
 		}
 	}
 }

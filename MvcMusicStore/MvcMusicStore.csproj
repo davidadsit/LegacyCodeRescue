@@ -73,6 +73,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\AlbumVm.cs" />
+    <Compile Include="Application\CatalogFacade.cs" />
+    <Compile Include="Application\GenreVm.cs" />
+    <Compile Include="Application\ICatalogFacade.cs" />
     <Compile Include="Application\IStoreRepository.cs" />
     <Compile Include="Application\StoreRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -253,4 +257,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(ProjectDir)$(OutDir) $(SolutionDir)FitNesse</PostBuildEvent>
+  </PropertyGroup>
 </Project>

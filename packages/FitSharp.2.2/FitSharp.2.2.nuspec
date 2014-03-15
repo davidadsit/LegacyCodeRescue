@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FitSharp</id>
+    <version>2.2</version>
+    <title>fitSharp</title>
+    <authors>Mike Stockdale</authors>
+    <owners>Mike Stockdale</owners>
+    <licenseUrl>https://github.com/jediwhale/fitsharp/blob/master/GPLicense.txt</licenseUrl>
+    <projectUrl>http://fitsharp.github.io/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>fitSharp is a set of open-source functional testing tools for .NET, inspired by the Framework for Integrated Test</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>fit fitnesse testing</tags>
+  </metadata>
+</package>

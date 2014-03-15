@@ -1,4 +1,4 @@
-﻿@model MvcMusicStore.Models.Album
+﻿@model MvcMusicStore.Application.AlbumVm
 
 @{
     ViewBag.Title = "Album - " + Model.Title;
@@ -13,11 +13,11 @@
 <div id="album-details">
     <p>
         <em>Genre:</em>
-        @Model.Genre.Name
+        @Model.GenreName
     </p>
     <p>
         <em>Artist:</em>
-        @Model.Artist.Name
+        @Model.ArtistName
     </p>
     <p>
         <em>Price:</em>
