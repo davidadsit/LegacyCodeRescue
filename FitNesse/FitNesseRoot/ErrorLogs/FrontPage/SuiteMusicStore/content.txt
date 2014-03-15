@@ -1,8 +1,8 @@
 
 !3 !-slim:D:\Development\LegacyCodeRescue\FitNesse\Runner.exe-!
-|'''Date: '''| 8:49:51 PM (MDT) on Friday, March 14, 2014 |
+|'''Date: '''| 8:59:31 PM (MDT) on Friday, March 14, 2014 |
 |'''Test Page: '''|.FrontPage.SuiteMusicStore|
-|'''Command: '''| !-D:\Development\LegacyCodeRescue\FitNesse\Runner.exe -r fitSharp.Slim.Service.Runner,D:\Development\LegacyCodeRescue\FitNesse\fitSharp.dll D:\Development\LegacyCodeRescue\FitNesse\MusicStore.Acceptance.dll  8088-! |
+|'''Command: '''| !-D:\Development\LegacyCodeRescue\FitNesse\Runner.exe -r fitSharp.Slim.Service.Runner,D:\Development\LegacyCodeRescue\FitNesse\fitSharp.dll D:\Development\LegacyCodeRescue\FitNesse\MusicStore.Acceptance.dll  8089-! |
 |'''Exit code: '''| 0 |
-|'''Time elapsed: '''| 3.427 seconds |
+|'''Time elapsed: '''| 3.443 seconds |
 

@@ -1,0 +1,6 @@
+!|catalog fixture                                                  |
+|genre name|all album titles?|genres to album links are consistent?|
+|pop       |                 |YES                                  |
+|disco     |                 |YES                                  |
+|classical |                 |YES                                  |
+|rock      |                 |YES                                  |

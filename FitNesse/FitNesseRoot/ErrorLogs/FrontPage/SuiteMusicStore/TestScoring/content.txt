@@ -1,21 +1,8 @@
 
 !3 !-slim:D:\Development\LegacyCodeRescue\FitNesse\Runner.exe-!
-|'''Date: '''| 8:32:30 PM (MDT) on Friday, March 14, 2014 |
+|'''Date: '''| 9:02:39 PM (MDT) on Friday, March 14, 2014 |
 |'''Test Page: '''|.FrontPage.SuiteMusicStore.TestScoring|
-|'''Command: '''| !-D:\Development\LegacyCodeRescue\FitNesse\Runner.exe -r fitSharp.Slim.Service.Runner,D:\Development\LegacyCodeRescue\FitNesse\fitSharp.dll D:\Development\LegacyCodeRescue\FitNesse\MusicStore.Acceptance.dll  8091-! |
-|'''Exit code: '''| -532459699 |
-|'''Time elapsed: '''| 210.125 seconds |
+|'''Command: '''| !-D:\Development\LegacyCodeRescue\FitNesse\Runner.exe -r fitSharp.Slim.Service.Runner,D:\Development\LegacyCodeRescue\FitNesse\fitSharp.dll D:\Development\LegacyCodeRescue\FitNesse\MusicStore.Acceptance.dll  8092-! |
+|'''Exit code: '''| 0 |
+|'''Time elapsed: '''| 2.234 seconds |
 
-----
-'''Standard Error:'''
-{{{ 
-Unhandled Exception: System.BadImageFormatException: Could not load file or assembly 'fitSharp, Version=2.2.4498.25852, Culture=neutral, PublicKeyToken=null' or one of its dependencies. This assembly is built by a runtime newer than the currently loaded runtime and cannot be loaded.
-File name: 'fitSharp, Version=2.2.4498.25852, Culture=neutral, PublicKeyToken=null'
-   at fitSharp.Runner.Program.Main(String[] arguments)
-
-WRN: Assembly binding logging is turned OFF.
-To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
-Note: There is some performance penalty associated with assembly bind failure logging.
-To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
-
- }}}

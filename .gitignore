@@ -7,6 +7,8 @@ _ReSharper*
 *.ldf
 *.dotcover
 *.user
+FitNesse/*.dll
+FitNesse/*.pdb
 FitNesse/FitNesseRoot/ErrorLogs
 FitNesse/FitNesseRoot/RecentChanges
 FitNesse/FitNesseRoot/files/testProgress/

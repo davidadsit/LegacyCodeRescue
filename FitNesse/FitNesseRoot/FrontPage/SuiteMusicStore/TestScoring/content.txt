@@ -1,4 +1,0 @@
-!|catalog fixture       |
-|genre    |genre albums?|
-|rock     |0            |
-|classical|300          |
