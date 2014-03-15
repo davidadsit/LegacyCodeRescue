@@ -7,3 +7,8 @@ _ReSharper*
 *.ldf
 *.dotcover
 *.user
+FitNesse/FitNesseRoot/ErrorLogs
+FitNesse/FitNesseRoot/RecentChanges
+FitNesse/FitNesseRoot/files/testProgress/
+FitNesse/FitNesseRoot/files/testResults/
+FitNesse/FitNesseRoot//*.zip
