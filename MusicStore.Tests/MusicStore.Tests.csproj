@@ -53,9 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationTests\AlbumMother.cs" />
+    <Compile Include="ObjectMothers\AlbumMother.cs" />
     <Compile Include="ApplicationTests\CatalogFacadeTests.cs" />
-    <Compile Include="ApplicationTests\GenreMother.cs" />
+    <Compile Include="ObjectMothers\ArtistMother.cs" />
+    <Compile Include="ObjectMothers\GenreMother.cs" />
     <Compile Include="ControllerTests\StoreControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryTests\StoreRepositoryTests.cs" />

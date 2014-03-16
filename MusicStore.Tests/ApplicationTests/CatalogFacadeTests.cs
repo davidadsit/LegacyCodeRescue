@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
+using MusicStore.Tests.ObjectMothers;
 using MvcMusicStore.Application;
 using MvcMusicStore.Models;
 using NUnit.Framework;

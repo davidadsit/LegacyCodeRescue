@@ -36,7 +36,9 @@ namespace MvcMusicStore.Application
                    {
                        AlbumId = album.AlbumId,
                        GenreId = album.GenreId,
+                       GenreName = album.Genre.Name,
                        ArtistId = album.ArtistId,
+                       ArtistName = album.Artist.Name,
                        Title = album.Title,
                        Price = album.Price,
                        AlbumArtUrl = album.AlbumArtUrl,
